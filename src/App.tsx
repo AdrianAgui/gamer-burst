@@ -5,9 +5,9 @@ export default function App() {
 
   return (
     <main>
-      <h1 className="text-3xl">gamer burst</h1>
+      <h1>gamer burst</h1>
 
-      <button className="button" onClick={() => setCount((count) => count + 1)}>
+      <button onClick={() => setCount((count) => count + 1)}>
         count is {count}
       </button>
     </main>

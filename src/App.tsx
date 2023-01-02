@@ -7,9 +7,7 @@ export default function App() {
     <main>
       <h1>gamer burst</h1>
 
-      <button onClick={() => setCount((count) => count + 1)}>
-        count is {count}
-      </button>
+      <button onClick={() => setCount((count) => count + 1)}>count is {count}</button>
     </main>
   )
 }

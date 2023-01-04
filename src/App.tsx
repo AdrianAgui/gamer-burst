@@ -1,13 +1,14 @@
-import { useState } from 'react'
+import './App.css'
+import Navbar from './components/Navbar/Navbar'
+import Home from './pages/Home/Home'
 
-export default function App() {
-  const [count, setCount] = useState(0)
-
+const App = () => {
   return (
-    <main>
-      <h1>gamer burst</h1>
-
-      <button onClick={() => setCount((count) => count + 1)}>count is {count}</button>
-    </main>
+    <>
+      <Navbar />
+      <Home />
+    </>
   )
 }
+
+export default App

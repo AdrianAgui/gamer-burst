@@ -3,12 +3,11 @@ import { useMemo, useState } from 'react'
 import Home from './pages/Home/Home'
 
 import Navbar from './components/Navbar/Navbar'
-import ToggleColorMode, { ColorModeContext } from './components/ToggleColorMode/ToggleColorMode'
-
-import './App.css'
+import { ColorModeContext } from './components/ToggleColorMode/ToggleColorMode'
 
 import { CssBaseline } from '@mui/material'
 import { createTheme, ThemeProvider } from '@mui/material/styles'
+import { LayoutContainer } from './styled-components/layout.styled.component'
 
 export default function App() {
   const [mode, setMode] = useState<'light' | 'dark'>('light')
@@ -37,10 +36,9 @@ export default function App() {
       <ThemeProvider theme={theme}>
         <CssBaseline />
         <Navbar />
-        <div style={{ marginTop: '50px' }}>
-          <ToggleColorMode />
-        </div>
-        <Home />
+        <LayoutContainer>
+          <Home />
+        </LayoutContainer>
       </ThemeProvider>
     </ColorModeContext.Provider>
   )

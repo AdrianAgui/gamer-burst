@@ -1,35 +1,16 @@
-import { useMemo, useState } from 'react'
-
 import Home from './pages/Home/Home'
 
 import Navbar from './components/Navbar/Navbar'
 import { ColorModeContext } from './components/ToggleColorMode/ToggleColorMode'
 
 import { CssBaseline } from '@mui/material'
-import { createTheme, ThemeProvider } from '@mui/material/styles'
+import { ThemeProvider } from '@mui/material/styles'
+
+import useTheme from './hooks/useTheme'
 import { LayoutContainer } from './styled-components/layout.styled.component'
 
 export default function App() {
-  const [mode, setMode] = useState<'light' | 'dark'>('light')
-
-  const colorMode = useMemo(
-    () => ({
-      toggleColorMode: () => {
-        setMode((prevMode) => (prevMode === 'light' ? 'dark' : 'light'))
-      },
-    }),
-    []
-  )
-
-  const theme = useMemo(
-    () =>
-      createTheme({
-        palette: {
-          mode,
-        },
-      }),
-    [mode]
-  )
+  const { colorMode, theme } = useTheme()
 
   return (
     <ColorModeContext.Provider value={colorMode}>

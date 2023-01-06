@@ -1,13 +1,12 @@
-import { AppBar, Toolbar, Typography } from '@mui/material'
+import { AppBar, Toolbar } from '@mui/material'
+import Logo from '../Logo/Logo'
 import ToggleColorMode from '../ToggleColorMode/ToggleColorMode'
 
 export default function Navbar() {
   return (
     <AppBar position='fixed'>
-      <Toolbar>
-        <Typography variant='h6' component='div' sx={{ flexGrow: 1 }}>
-          Gamer Burst
-        </Typography>
+      <Toolbar sx={{ justifyContent: 'space-between' }}>
+        <Logo />
         <ToggleColorMode />
       </Toolbar>
     </AppBar>

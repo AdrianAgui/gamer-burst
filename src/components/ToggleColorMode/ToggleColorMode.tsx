@@ -13,11 +13,11 @@ export default function ToggleColorMode() {
   const theme = useTheme()
   const ctxColorMode = useContext(ColorModeContext)
   return (
-    <>
+    <div className='flex items-center'>
       <IconButton sx={{ ml: 1 }} onClick={ctxColorMode.toggleColorMode} color='inherit'>
         {theme.palette.mode === 'dark' ? <Brightness7Icon /> : <Brightness4Icon />}
       </IconButton>
-      {theme.palette.mode} mode
-    </>
+      <span>{theme.palette.mode.charAt(0).toUpperCase() + theme.palette.mode.slice(1)} mode</span>
+    </div>
   )
 }

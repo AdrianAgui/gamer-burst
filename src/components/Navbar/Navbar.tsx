@@ -1,6 +1,6 @@
 import { AppBar, Button, Toolbar, Typography } from '@mui/material'
 
-const Navbar = () => {
+export default function Navbar() {
   return (
     <AppBar position='fixed'>
       <Toolbar>
@@ -12,5 +12,3 @@ const Navbar = () => {
     </AppBar>
   )
 }
-
-export default Navbar

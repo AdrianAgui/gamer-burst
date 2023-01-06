@@ -1,3 +1,5 @@
+import logo from '@/assets/logo-white.svg'
+
 export default function Logo() {
-  return <img src='/logo-white.svg' width='64' height='64' alt='logo' />
+  return <img src={logo} width='80' height='80' alt='logo' />
 }

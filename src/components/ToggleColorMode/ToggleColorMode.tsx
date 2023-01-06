@@ -14,10 +14,10 @@ export default function ToggleColorMode() {
   const ctxColorMode = useContext(ColorModeContext)
   return (
     <>
-      {theme.palette.mode} mode
       <IconButton sx={{ ml: 1 }} onClick={ctxColorMode.toggleColorMode} color='inherit'>
         {theme.palette.mode === 'dark' ? <Brightness7Icon /> : <Brightness4Icon />}
       </IconButton>
+      {theme.palette.mode} mode
     </>
   )
 }

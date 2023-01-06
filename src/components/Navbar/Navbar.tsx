@@ -1,4 +1,5 @@
-import { AppBar, Button, Toolbar, Typography } from '@mui/material'
+import { AppBar, Toolbar, Typography } from '@mui/material'
+import ToggleColorMode from '../ToggleColorMode/ToggleColorMode'
 
 export default function Navbar() {
   return (
@@ -7,7 +8,7 @@ export default function Navbar() {
         <Typography variant='h6' component='div' sx={{ flexGrow: 1 }}>
           Gamer Burst
         </Typography>
-        <Button color='inherit'>Login</Button>
+        <ToggleColorMode />
       </Toolbar>
     </AppBar>
   )

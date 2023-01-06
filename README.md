@@ -5,7 +5,7 @@
 
 <div align="center">
   <a href="https://github.com/AdrianAgui/gamer-burst">
-    <img src="src/assets/logo.svg" alt="logo" width="80" height="80">
+    <img src="src/assets/logo.svg" alt="logo" width="180" height="180">
   </a>
 
   <h3 align="center">Gamer Burst</h3>

@@ -6,29 +6,29 @@ import { useEffect, useState } from 'react'
 export default function useFetchGames() {
   const INIT_URI = `${API.URL}/games?key=${API.KEY}&page_size=${HOME_PAGE_ITEMS}`
 
-  const [data, setData] = useState<Game[]>()
+  const [games, setGames] = useState<Game[]>()
   const [error, setError] = useState<boolean>()
   const [isLoading, setIsLoading] = useState<boolean>(false)
 
   useEffect(() => {
     setIsLoading(true)
 
-    async function fetchData() {
+    const fetchGames = async () => {
       setIsLoading(true)
       try {
         const response = await axios.get(INIT_URI)
-        setData(response.data.results as Game[])
+        setGames(response.data.results as Game[])
         setError(false)
       } catch (err) {
         console.error(err)
-        setData([])
+        setGames([])
         setError(true)
       }
       setIsLoading(false)
     }
 
-    fetchData()
+    fetchGames()
   }, [])
 
-  return { isLoading, error, data }
+  return { isLoading, error, games }
 }

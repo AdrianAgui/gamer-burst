@@ -1,7 +1,7 @@
 import useFetchGames from '@/hooks/useFetchGames'
 
 export default function Home() {
-  const { isLoading, error, data: games } = useFetchGames()
+  const { isLoading, error, games } = useFetchGames()
 
   return (
     <>
@@ -11,11 +11,11 @@ export default function Home() {
         <p>An error occured while fetching users</p>
       ) : (
         games && (
-          <ul>
+          <ul className='flex flex-wrap justify-center items-center gap-16'>
             {games.map((game) => (
-              <li key={game.slug}>
-                <img loading='lazy' width='500' height='300' src={game.background_image} alt={game.slug} />
-                <p>{game.name}</p>
+              <li key={game.slug} className='flex flex-col items-center'>
+                <p className='text-xl font-semibold'>{game.name}</p>
+                <img className='w-full h-80 object-cover' src={game.background_image} alt={game.slug} loading='lazy' />
               </li>
             ))}
           </ul>

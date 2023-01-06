@@ -1,4 +1,4 @@
-export const HOME_PAGE_ITEMS = 15
+export const HOME_PAGE_ITEMS = 40
 
 export enum API {
   URL = 'https://api.rawg.io/api',

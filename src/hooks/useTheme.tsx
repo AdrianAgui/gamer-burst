@@ -20,6 +20,9 @@ export default function useTheme() {
           mode,
         },
         typography: {
+          body1: {
+            fontFamily: 'Work Sans, Arial, Helvetica, Verdana, sans-serif',
+          },
           button: {
             textTransform: 'none',
           },

@@ -17,9 +17,9 @@ export default function App() {
         <CssBaseline />
         <CartContextProvider>
           <Navbar />
-          <div className='home-container'>
+          <main className='home-container'>
             <Home />
-          </div>
+          </main>
         </CartContextProvider>
       </ThemeProvider>
     </ColorModeContext.Provider>

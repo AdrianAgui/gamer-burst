@@ -7,7 +7,7 @@ import { useEffect, useState } from 'react'
 const HOME_GAMES_URI = `${API.URL}/games?key=${API.KEY}&page_size=${HOME_PAGE_ITEMS}`
 
 const gamesAdapter = (games: Game[]) => {
-  return games.map((game) => ({ ...game, price: decimalHash(game.name) }))
+  return games.map((game) => ({ ...game, price: +decimalHash(game.name) }))
 }
 
 export default function useFetchGames() {

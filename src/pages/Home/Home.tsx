@@ -1,31 +1,46 @@
+import { useContext, useEffect } from 'react'
+
 import CartContext from '@/context/cart.context'
 import { CartContextType } from '@/context/types'
 import useFetchGames from '@/hooks/useFetchGames'
+import { CartGame } from '@/models/cart.model'
 import { Game } from '@/models/game.model'
-import { useContext, useEffect } from 'react'
-import { CartGame } from '../../models/cart.model'
+import { LocalStorageType } from '@/utils/constants'
+import { getLocalStorage, setLocalStorage } from '@/utils/utils'
 
 export default function Home() {
   const { isLoading, error, games } = useFetchGames()
   const { cartContext, setCartContext } = useContext(CartContext) as CartContextType
 
   useEffect(() => {
-    console.log('cart context update', cartContext)
-  }, [cartContext])
+    const initCart = getLocalStorage(LocalStorageType.CART)
+      ? getLocalStorage(LocalStorageType.CART)
+      : { totalAmount: 0, games: [] }
+    setCartContext(initCart)
+  }, [])
 
   const addToCart = (game: Game) => {
-    setCartContext({
-      totalAmount: +game.price + cartContext.totalAmount,
-      games: [...cartContext.games, { name: game.name, price: game.price } as CartGame],
-    })
+    const newGame = {
+      name: game.name,
+      price: game.price,
+      quantity: 1,
+    } as CartGame
+
+    const newCart = {
+      totalAmount: Number((cartContext.totalAmount + game.price).toFixed(2)),
+      games: [...cartContext.games, newGame],
+    }
+
+    setCartContext(newCart)
+    setLocalStorage(LocalStorageType.CART, newCart)
   }
 
   return (
     <>
       {isLoading ? (
-        <p>Fetching games...</p>
+        <p>Cargando catálogo...</p>
       ) : error ? (
-        <p>An error occured while fetching users</p>
+        <p>Ha ocurrido un error al cargar el catálogo</p>
       ) : (
         <div>
           {games && (

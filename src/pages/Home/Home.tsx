@@ -20,7 +20,8 @@ export default function Home() {
             <ul className='flex flex-wrap justify-center items-center gap-16'>
               {games.map((game) => (
                 <li key={game.slug} onClick={() => handleClick(game)} className='flex flex-col items-center'>
-                  <p className='text-xl font-semibold ml-1'>{game.name}</p>
+                  <p className='text-2xl font-semibold ml-1'>{game.name}</p>
+                  <p className='text-xl font-bold ml-1'>{game.price}€</p>
                   <img className='w-96 h-80 object-cover' src={game.background_image} alt={game.slug} loading='lazy' />
                 </li>
               ))}

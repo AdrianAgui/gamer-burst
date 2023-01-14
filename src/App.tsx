@@ -1,3 +1,4 @@
+import { CartContextProvider } from '@/context/cart.context'
 import Navbar from './components/Navbar/Navbar'
 import { ColorModeContext } from './components/ToggleColorMode/ToggleColorMode'
 import Home from './pages/Home/Home'
@@ -14,10 +15,12 @@ export default function App() {
     <ColorModeContext.Provider value={colorMode}>
       <ThemeProvider theme={theme}>
         <CssBaseline />
-        <Navbar />
-        <div className='home-container'>
-          <Home />
-        </div>
+        <CartContextProvider>
+          <Navbar />
+          <div className='home-container'>
+            <Home />
+          </div>
+        </CartContextProvider>
       </ThemeProvider>
     </ColorModeContext.Provider>
   )

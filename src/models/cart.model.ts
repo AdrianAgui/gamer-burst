@@ -1,6 +1,9 @@
-import { Game } from './game.model'
-
 export interface Cart {
   totalAmount: number
-  games: Game[]
+  games: CartGame[]
+}
+
+export interface CartGame {
+  name: string
+  price: number
 }

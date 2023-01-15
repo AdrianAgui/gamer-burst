@@ -1,3 +1,10 @@
+import logo from '@/assets/logo-white.svg'
+import { Link } from 'react-router-dom'
+
 export default function Logo() {
-  return <img src='src/assets/logo-white.svg' width='64' height='64' alt='logo' />
+  return (
+    <Link to='/'>
+      <img src={logo} width='80' height='80' alt='logo' />
+    </Link>
+  )
 }

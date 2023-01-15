@@ -28,6 +28,7 @@ export interface Game {
   tags: Tag[]
   esrb_rating: EsrbRating
   short_screenshots: ShortScreenshot[]
+  price: number
 }
 
 interface Rating {

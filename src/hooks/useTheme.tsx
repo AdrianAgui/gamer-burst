@@ -10,7 +10,7 @@ export default function useTheme() {
 
   useEffect(() => {
     const currentTheme = getLocalStorage(LocalStorageType.THEME)
-    setMode(currentTheme)
+    setMode(currentTheme ? currentTheme : 'light')
   }, [])
 
   const colorMode = useMemo(

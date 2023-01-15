@@ -19,7 +19,7 @@
 
 ## About The Project
 
-WIP 🔨👷
+Ecommerce platform for shopping videogames.
 
 ### Built With
 
@@ -36,9 +36,11 @@ List of any major frameworks/libraries used to bootstrap this project.
 
 ## Contact
 
-Adrian Aguirre - adrian.agui9@gmail.com
+Adrian Aguirre - adrian.agui9@gmail.com - [https://adrianagui.dev](https://adrianagui.dev)
 
-Project Link: [https://github.com/AdrianAgui/gamer-burst](https://github.com/AdrianAgui/gamer-burst)
+Web: [https://gamer-burst.vercel.app](https://gamer-burst.vercel.app)
+
+Repository: [https://github.com/AdrianAgui/gamer-burst](https://github.com/AdrianAgui/gamer-burst)
 
 <p align="right"><a href="#readme-top">back to top</a></p>
 

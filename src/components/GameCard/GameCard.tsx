@@ -2,7 +2,7 @@ import CartContext from '@/context/cart.context'
 import { CartContextType } from '@/context/types'
 import { CartGame } from '@/models/cart.model'
 import { LocalStorageType } from '@/utils/constants'
-import { setLocalStorage } from '@/utils/utils'
+import { formatPrice, setLocalStorage } from '@/utils/utils'
 import { Box, Button, CardActionArea, CardActions } from '@mui/material'
 import Card from '@mui/material/Card'
 import CardContent from '@mui/material/CardContent'
@@ -56,9 +56,9 @@ export default function GameCard(props: Props) {
               {props.name}
             </Typography>
             <Box component='div' display='flex' justifyContent='space-between' alignItems='center' mt={1}>
-              <Rating rating={props.rating}></Rating>
+              <Rating rating={props.rating} />
               <Typography variant='h5' component='div' display='flex' justifyContent='end' fontWeight='bold'>
-                {props.price}€
+                {formatPrice(props.price)}€
               </Typography>
             </Box>
           </CardContent>

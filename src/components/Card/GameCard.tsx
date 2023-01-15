@@ -20,7 +20,7 @@ export default function GameCard(props: Props) {
           component='img'
           image={props.image}
           alt={props.slug}
-          sx={{ height: 250, objectFit: 'cover' }}
+          className='h-[250px] object-cover'
           loading='lazy'
         />
         <CardContent>

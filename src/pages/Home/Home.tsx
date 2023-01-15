@@ -1,5 +1,3 @@
-import { useContext, useEffect } from 'react'
-
 import GameCard from '@/components/Card/GameCard'
 import CartContext from '@/context/cart.context'
 import { CartContextType } from '@/context/types'
@@ -8,6 +6,8 @@ import { CartGame } from '@/models/cart.model'
 import { Game } from '@/models/game.model'
 import { LocalStorageType } from '@/utils/constants'
 import { getLocalStorage, setLocalStorage } from '@/utils/utils'
+import { useContext, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 
 export default function Home() {
   const { cartContext, setCartContext } = useContext(CartContext) as CartContextType
@@ -37,7 +37,7 @@ export default function Home() {
   }
 
   return (
-    <>
+    <main className='home-container'>
       {isLoading ? (
         <p>Cargando catálogo...</p>
       ) : error ? (
@@ -47,20 +47,22 @@ export default function Home() {
           {games && (
             <ul className='flex flex-wrap justify-center items-center gap-16'>
               {games.map((game) => (
-                <li key={game.slug} onClick={() => addToCart(game)} className='flex flex-col items-center'>
-                  <GameCard
-                    name={game.name}
-                    slug={game.slug}
-                    image={game.background_image}
-                    rating={game.rating}
-                    price={game.price}
-                  />
-                </li>
+                <Link to={`game/${game.slug}`} key={game.slug}>
+                  <li onClick={() => addToCart(game)} className='flex flex-col items-center'>
+                    <GameCard
+                      name={game.name}
+                      slug={game.slug}
+                      image={game.background_image}
+                      rating={game.rating}
+                      price={game.price}
+                    />
+                  </li>
+                </Link>
               ))}
             </ul>
           )}
         </div>
       )}
-    </>
+    </main>
   )
 }

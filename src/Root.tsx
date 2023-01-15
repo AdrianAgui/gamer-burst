@@ -1,14 +1,12 @@
 import { CartContextProvider } from '@/context/cart.context'
-import Navbar from './components/Navbar/Navbar'
-import { ColorModeContext } from './components/ToggleColorMode/ToggleColorMode'
-import Home from './pages/Home/Home'
-
 import { CssBaseline } from '@mui/material'
 import { ThemeProvider } from '@mui/material/styles'
-
+import { Outlet } from 'react-router-dom'
+import Navbar from './components/Navbar/Navbar'
+import { ColorModeContext } from './components/ToggleColorMode/ToggleColorMode'
 import useTheme from './hooks/useTheme'
 
-export default function App() {
+export default function Root() {
   const { colorMode, theme } = useTheme()
 
   return (
@@ -17,8 +15,8 @@ export default function App() {
         <CssBaseline />
         <CartContextProvider>
           <Navbar />
-          <main className='home-container'>
-            <Home />
+          <main className='mt-[64px]'>
+            <Outlet />
           </main>
         </CartContextProvider>
       </ThemeProvider>

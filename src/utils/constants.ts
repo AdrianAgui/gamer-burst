@@ -7,4 +7,5 @@ export enum API {
 
 export enum LocalStorageType {
   CART = 'cart',
+  THEME = 'theme',
 }

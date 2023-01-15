@@ -1,13 +1,26 @@
+import { LocalStorageType } from '@/utils/constants'
+import { getLocalStorage, setLocalStorage } from '@/utils/utils'
 import { createTheme } from '@mui/material'
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
+
+type Theme = 'light' | 'dark'
 
 export default function useTheme() {
-  const [mode, setMode] = useState<'light' | 'dark'>('light')
+  const [mode, setMode] = useState<Theme>('light')
+
+  useEffect(() => {
+    const currentTheme = getLocalStorage(LocalStorageType.THEME)
+    setMode(currentTheme)
+  }, [])
 
   const colorMode = useMemo(
     () => ({
       toggleColorMode: () => {
-        setMode((prevMode) => (prevMode === 'light' ? 'dark' : 'light'))
+        setMode((prevMode) => {
+          const theme: Theme = prevMode === 'light' ? 'dark' : 'light'
+          setLocalStorage(LocalStorageType.THEME, theme)
+          return theme
+        })
       },
     }),
     []
@@ -20,9 +33,7 @@ export default function useTheme() {
           mode,
         },
         typography: {
-          body1: {
-            fontFamily: 'Work Sans, Arial, Helvetica, Verdana, sans-serif',
-          },
+          fontFamily: 'Work Sans, Arial, Helvetica, Verdana, sans-serif',
           button: {
             textTransform: 'none',
           },

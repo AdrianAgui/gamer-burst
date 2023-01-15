@@ -16,10 +16,10 @@ export default function ToggleColorMode() {
   return (
     <div className='flex items-center' onClick={ctxColorMode.toggleColorMode}>
       <Button color='inherit'>
-        {theme.palette.mode === 'dark' ? <Brightness7Icon /> : <Brightness4Icon />}
-        <span className='text-lg ml-2 font-worksans'>
+        <span className='text-lg mr-2'>
           {theme.palette.mode.charAt(0).toUpperCase() + theme.palette.mode.slice(1)} mode
         </span>
+        {theme.palette.mode === 'dark' ? <Brightness7Icon /> : <Brightness4Icon />}
       </Button>
     </div>
   )

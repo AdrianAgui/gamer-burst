@@ -18,3 +18,7 @@ export const decimalHash = (gameName: string) => {
   }
   return (sum % 60).toFixed(2)
 }
+
+export const formatPrice = (price: number) => {
+  return (Math.round(price * 100) / 100).toFixed(2)
+}

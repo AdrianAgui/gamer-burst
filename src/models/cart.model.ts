@@ -4,6 +4,7 @@ export interface Cart {
 }
 
 export interface CartGame {
+  id: number
   name: string
   price: number
   quantity: number

@@ -16,27 +16,22 @@ export default function useFetchGames() {
   const [isLoading, setIsLoading] = useState<boolean>(false)
 
   useEffect(() => {
-    if (games && games?.length === 0) {
-      setIsLoading(true)
-
-      const fetchGames = async () => {
-        setIsLoading(true)
-        try {
-          const response = await axios.get(HOME_GAMES_URI)
-          const games = gamesAdapter(response.data.results) as unknown
-          setGames(games as Game[])
-          setError(false)
-        } catch (err) {
-          console.error(err)
-          setGames([])
-          setError(true)
-        }
-        setIsLoading(false)
-      }
-
-      fetchGames()
-    }
+    fetchGames()
   }, [])
+  const fetchGames = async () => {
+    setIsLoading(true)
+    try {
+      const response = await axios.get(HOME_GAMES_URI)
+      const games = gamesAdapter(response.data.results) as unknown
+      setGames(games as Game[])
+      setError(false)
+    } catch (err) {
+      console.error(err)
+      setGames([])
+      setError(true)
+    }
+    setIsLoading(false)
+  }
 
   return { isLoading, error, games }
 }

@@ -1,3 +1,5 @@
+import { CartGame } from '@/models/cart.model'
+
 export const getLocalStorage = (key: string) => {
   return JSON.parse(localStorage.getItem(key) as string)
 }
@@ -21,4 +23,8 @@ export const decimalHash = (gameName: string) => {
 
 export const formatPrice = (price: number) => {
   return (Math.round(price * 100) / 100).toFixed(2)
+}
+
+export const calculateTotalAmount = (games: CartGame[]) => {
+  return games.reduce((total, game) => total + game.price * game.quantity, 0)
 }

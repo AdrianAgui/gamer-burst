@@ -16,7 +16,7 @@ import { Fragment, useContext, useState } from 'react'
 
 export default function Drawer() {
   const { cartContext } = useContext(CartContext) as CartContextType
-  const { remove } = useCart()
+  const { withdraw } = useCart()
   const [open, setOpen] = useState(false)
 
   const cartLineText = (name: string, quantity: number) => (quantity > 1 ? name + ' x' + quantity : name)
@@ -50,7 +50,7 @@ export default function Drawer() {
       {cartContext.games.map((game: CartGame, index) => (
         <ListItem key={index} sx={{ justifyContent: 'space-between' }}>
           <ListItemText primary={cartLineText(game.name, game.quantity)} primaryTypographyProps={{ fontSize: 14 }} />
-          <IconButton onClick={() => remove(game.id)}>
+          <IconButton onClick={() => withdraw(game.id)}>
             <DeleteIcon />
           </IconButton>
         </ListItem>

@@ -2,7 +2,7 @@ import CartContext from '@/context/cart.context'
 import { CartContextType } from '@/context/types'
 import { Cart, CartGame } from '@/models/cart.model'
 import { LocalStorageType } from '@/utils/constants'
-import { formatPrice, setLocalStorage } from '@/utils/utils'
+import { calculateTotalAmount, formatPrice, setLocalStorage } from '@/utils/utils'
 import { useContext } from 'react'
 
 export default function useCart() {
@@ -10,37 +10,42 @@ export default function useCart() {
 
   const get = (id: number) => cartContext.games.find((game) => game.id === id)
 
-  const add = (id: number, name: string, price: number) => {
-    const item = get(id)
+  const update = (id: number, name: string, price: number, quantity: number) => {
+    if (!quantity) withdraw(id)
+    else {
+      const item = get(id)
+      let newCartGames: CartGame[] = []
+      let totalAmount = 0
 
-    if (item) {
-      item.price = item.price + price
-      item.quantity = item.quantity + 1
-      setCart({
-        totalAmount: +formatPrice(cartContext.totalAmount + price),
-        games: [...cartContext.games],
-      })
-    } else {
-      setCart({
-        totalAmount: +formatPrice(cartContext.totalAmount + price),
-        games: [
+      if (item) {
+        item.quantity = quantity
+        newCartGames = cartContext.games
+        totalAmount = calculateTotalAmount(cartContext.games)
+      } else {
+        newCartGames = [
           ...cartContext.games,
           {
             id,
             name,
             price,
-            quantity: 1,
+            quantity,
           } as CartGame,
-        ],
+        ]
+        totalAmount = calculateTotalAmount(newCartGames)
+      }
+
+      setCart({
+        totalAmount: +formatPrice(totalAmount),
+        games: newCartGames,
       })
     }
   }
 
-  const remove = (id: number) => {
+  const withdraw = (id: number) => {
     const item = get(id)
     if (item) {
       setCart({
-        totalAmount: +formatPrice(cartContext.totalAmount - item.price),
+        totalAmount: +formatPrice(cartContext.totalAmount - item.price * item.quantity),
         games: cartContext.games.filter((game) => game.id !== id),
       })
     }
@@ -51,5 +56,5 @@ export default function useCart() {
     setLocalStorage(LocalStorageType.CART, cart)
   }
 
-  return { add, remove }
+  return { cartContext, get, update, withdraw }
 }

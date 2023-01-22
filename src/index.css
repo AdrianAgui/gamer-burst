@@ -10,3 +10,13 @@
   align-items: center;
   padding: 2rem;
 }
+
+.units-selector input[type='number'] {
+  width: 30px;
+  text-align: center;
+}
+
+.units-selector input[type='number']::-webkit-inner-spin-button,
+.units-selector input[type='number']::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+}

@@ -1,8 +1,7 @@
 import { CartContextProvider } from '@/context/cart.context'
 import { CssBaseline } from '@mui/material'
 import { ThemeProvider } from '@mui/material/styles'
-import { Outlet } from 'react-router-dom'
-import Navbar from './components/Navbar/Navbar'
+import App from './App'
 import { ColorModeContext } from './components/ToggleColorMode/ToggleColorMode'
 import useTheme from './hooks/useTheme'
 
@@ -14,10 +13,7 @@ export default function Root() {
       <ThemeProvider theme={theme}>
         <CssBaseline />
         <CartContextProvider>
-          <Navbar />
-          <main className='mt-[64px]'>
-            <Outlet />
-          </main>
+          <App />
         </CartContextProvider>
       </ThemeProvider>
     </ColorModeContext.Provider>

@@ -5,7 +5,7 @@ import { CartGame } from '@/models/cart.model'
 import CloseIcon from '@mui/icons-material/Close'
 import DeleteIcon from '@mui/icons-material/Delete'
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart'
-import { IconButton, Typography } from '@mui/material'
+import { Badge, IconButton, Typography } from '@mui/material'
 import Box from '@mui/material/Box'
 import Divider from '@mui/material/Divider'
 import List from '@mui/material/List'
@@ -20,6 +20,8 @@ export default function Drawer() {
   const [open, setOpen] = useState(false)
 
   const cartLineText = (name: string, quantity: number) => (quantity > 1 ? name + ' x' + quantity : name)
+
+  const cartTotalItems = () => cartContext.games.reduce((totalItems, item) => totalItems + item.quantity, 0)
 
   const toggleDrawer = (open: boolean) => (event: React.KeyboardEvent | React.MouseEvent) => {
     if (
@@ -78,8 +80,11 @@ export default function Drawer() {
         edge='start'
         sx={{ ml: 2, display: open ? 'none' : 'block' }}
       >
-        <ShoppingCartIcon />
+        <Badge badgeContent={cartTotalItems()} color='secondary' showZero>
+          <ShoppingCartIcon />
+        </Badge>
       </IconButton>
+
       <SwipeableDrawer anchor='right' open={open} onClose={toggleDrawer(false)} onOpen={toggleDrawer(true)}>
         {list()}
       </SwipeableDrawer>

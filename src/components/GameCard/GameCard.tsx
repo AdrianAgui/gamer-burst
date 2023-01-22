@@ -5,7 +5,6 @@ import CardContent from '@mui/material/CardContent'
 import CardMedia from '@mui/material/CardMedia'
 import Typography from '@mui/material/Typography'
 import { Link } from 'react-router-dom'
-import Rating from '../Rating/Rating'
 import UnitSelector from '../UnitSelector/UnitSelector'
 
 interface Props {
@@ -21,7 +20,7 @@ export default function GameCard(props: Props) {
   return (
     <Card className='w-[380px] min-w-[380px] h-auto flex flex-col justify-center'>
       <Link to={`game/${props.slug}/${props.id}`}>
-        <CardActionArea>
+        <CardActionArea component='div'>
           <CardMedia
             component='img'
             image={props.image}
@@ -37,15 +36,9 @@ export default function GameCard(props: Props) {
             >
               {props.name}
             </Typography>
-            <Box
-              component='div'
-              className='flex justify-between items-center cursor-default mt-3'
-              onClick={(e) => e.preventDefault()}
-            >
-              <Rating rating={props.rating} />
-              <div>
-                <UnitSelector />
-              </div>
+            <Box component='div' className='flex justify-between items-center mt-3'>
+              <Box component='div'>{props.rating}⭐</Box>
+              <UnitSelector id={props.id} name={props.name} price={props.price} />
               <Typography variant='h5' component='div' display='flex' justifyContent='end' fontWeight='bold'>
                 {formatPrice(props.price)}€
               </Typography>

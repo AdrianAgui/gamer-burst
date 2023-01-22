@@ -16,8 +16,9 @@ export default function useFetchGames() {
   const [isLoading, setIsLoading] = useState<boolean>(false)
 
   useEffect(() => {
-    fetchGames()
+    if (games.length === 0) fetchGames()
   }, [])
+
   const fetchGames = async () => {
     setIsLoading(true)
     try {

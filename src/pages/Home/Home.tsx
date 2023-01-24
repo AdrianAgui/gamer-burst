@@ -1,6 +1,6 @@
 import Loader from '@/components/Loader/Loader'
 import useFetchGames from '@/hooks/useFetchGames'
-import Grid from '../../components/Grid/Grid'
+import Grid from '../../components/Home/Grid/Grid'
 
 export default function Home() {
   const { isLoading, error, games } = useFetchGames()

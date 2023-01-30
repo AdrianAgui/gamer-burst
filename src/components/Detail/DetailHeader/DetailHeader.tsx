@@ -13,7 +13,7 @@ export default function DetailHeader(props: Props) {
   return (
     <Box component='header' className='flex flex-col lg:flex-row justify-between items-center font-bold'>
       <Box component='div' className='flex flex-col'>
-        <Typography component='h1' fontSize={32} fontWeight='bold'>
+        <Typography component='h1' fontSize={32} fontWeight='bold' lineHeight={8} textAlign='center'>
           {props.name}
         </Typography>
         {props.released && (
@@ -24,7 +24,7 @@ export default function DetailHeader(props: Props) {
       </Box>
 
       <Box component='div' className='flex items-center mt-4 lg:mt-0'>
-        <Typography component='span' fontSize={24} fontWeight='bold'>
+        <Typography component='span' fontSize={24} fontWeight='bold' className='hidden sm:block'>
           {props.rating}
         </Typography>
         <Rating className='ml-3 mr-8' value={props.rating} precision={0.5} size='large' readOnly />

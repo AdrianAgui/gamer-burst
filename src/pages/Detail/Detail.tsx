@@ -24,7 +24,7 @@ export default function Detail() {
       ) : (
         <div>
           {gameInfo && (
-            <Container>
+            <Container maxWidth='xl'>
               <DetailHeader
                 name={gameInfo.name}
                 released={gameInfo.released}
@@ -34,6 +34,7 @@ export default function Detail() {
 
               <DetailContent
                 slug={gameInfo.slug}
+                name={gameInfo.name}
                 image1={gameInfo.background_image}
                 image2={gameInfo.background_image_additional}
                 description={gameInfo.description_raw}

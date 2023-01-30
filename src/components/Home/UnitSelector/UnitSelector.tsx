@@ -10,7 +10,7 @@ interface Props {
 }
 
 export default function UnitSelector(props: Props) {
-  const [value, setValue] = useState<number>(0)
+  const [value, setValue] = useState<number | string>('')
   const { cartContext, get, update } = useCart()
 
   useEffect(() => {
@@ -20,16 +20,18 @@ export default function UnitSelector(props: Props) {
   }, [cartContext])
 
   const addToCart = () => {
-    if (value < 99) {
-      setValue(value + 1)
-      update(props.id, props.name, props.price, value + 1)
+    const numValue = Number(value)
+    if (numValue < 99) {
+      setValue(numValue + 1)
+      update(props.id, props.name, props.price, numValue + 1)
     }
   }
 
   const removeToCart = () => {
-    if (value > 0) {
-      setValue(value - 1)
-      update(props.id, props.name, props.price, value - 1)
+    const numValue = Number(value)
+    if (numValue > 0) {
+      setValue(numValue - 1)
+      update(props.id, props.name, props.price, numValue - 1)
     }
   }
 
@@ -60,6 +62,8 @@ export default function UnitSelector(props: Props) {
         value={value}
         InputProps={{ inputProps: { min: 0, max: 99 } }}
         onChange={handleChange}
+        onFocus={() => !value && setValue('')}
+        onBlur={() => !value && setValue('')}
       />
 
       <IconButton color='inherit' onClick={addToCart}>

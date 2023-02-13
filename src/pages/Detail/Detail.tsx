@@ -3,17 +3,12 @@ import DetailHeader from '@/components/Detail/DetailHeader/DetailHeader'
 import Tags from '@/components/Detail/Tags/Tags'
 import Loader from '@/components/Loader/Loader'
 import { Box, Container } from '@mui/material'
-import { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import useFetchGameInfo from '../../hooks/useFetchGameInfo'
 
 export default function Detail() {
   const { id } = useParams()
   const { isLoading, error, gameInfo } = useFetchGameInfo(id ? id : '0')
-
-  useEffect(() => {
-    console.log(gameInfo)
-  }, [gameInfo])
 
   return (
     <Box component='article' className='p-2 sm:p-8'>

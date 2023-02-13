@@ -4,13 +4,6 @@
 @tailwind components;
 @tailwind utilities;
 
-.home-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 2rem;
-}
-
 .units-selector input[type='number'] {
   width: 30px;
   text-align: center;

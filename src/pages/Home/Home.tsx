@@ -6,11 +6,11 @@ export default function Home() {
   const { isLoading, error, games } = useFetchGames()
 
   return (
-    <main className='home-container'>
+    <main className='py-6'>
       {isLoading ? (
         <Loader />
       ) : error ? (
-        <p>Ha ocurrido un error al cargar el catálogo</p>
+        <p>An error occurred while loading the catalog</p>
       ) : (
         <section>{games && <Grid games={games}></Grid>}</section>
       )}

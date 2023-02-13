@@ -1,4 +1,5 @@
 import { CartContextProvider } from '@/context/cart.context'
+import { QueryContextProvider } from '@/context/query.context'
 import { CssBaseline } from '@mui/material'
 import { ThemeProvider } from '@mui/material/styles'
 import App from './App'
@@ -12,9 +13,12 @@ export default function Root() {
     <ColorModeContext.Provider value={colorMode}>
       <ThemeProvider theme={theme}>
         <CssBaseline />
-        <CartContextProvider>
-          <App />
-        </CartContextProvider>
+
+        <QueryContextProvider>
+          <CartContextProvider>
+            <App />
+          </CartContextProvider>
+        </QueryContextProvider>
       </ThemeProvider>
     </ColorModeContext.Provider>
   )

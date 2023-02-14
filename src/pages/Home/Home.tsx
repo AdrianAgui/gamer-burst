@@ -10,9 +10,13 @@ export default function Home() {
       {isLoading ? (
         <Loader />
       ) : error ? (
-        <p>An error occurred while loading the catalog</p>
+        <p className='grid place-content-center'>An error occurred while loading the catalog</p>
+      ) : games && games.length > 0 ? (
+        <section>
+          <Grid games={games}></Grid>
+        </section>
       ) : (
-        <section>{games && <Grid games={games}></Grid>}</section>
+        <p className='grid place-content-center'>No games have been found</p>
       )}
     </main>
   )
